@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login para Bruna</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('https://i.imgur.com/N7bq1FZ.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .login-container, .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            max-width: 1000px;
+        }
+        h1 {
+            text-align: center;
+            color: #d94f70;
+            margin-bottom: 20px;
+        }
+        p {
+            line-height: 1.6;
+            font-size: 18px;
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+        .assinatura {
+            margin-top: 25px;
+            font-style: italic;
+            text-align: right;
+            color: #555;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .senha-container {
+            position: relative;
+        }
+        
+       .mostrar-senha {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none !important;
+    border: none !important;
+    cursor: pointer;
+    font-size: 18px;
+    color: #555;
+    outline: none;
+    width: auto !important;
+    height: auto !important;
+    padding: 0;
+}
+
+        .mostrar-senha:focus {
+            outline: none;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            background: #d94f70;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #c43f60;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container" id="login">
+    <h1>Área Restrita</h1>
+    <input type="text" id="usuario" placeholder="Usuário">
+
+    <div class="senha-container">
+        <input type="password" id="senha" placeholder="Senha">
+        <button class="mostrar-senha" type="button" onclick="toggleSenha()">👁</button>
+    </div>
+
+    <button onclick="login()">Entrar</button>
+</div>
+
+<div class="container" id="mensagem" style="display: none; animation: fadeIn 2.5s ease-in-out;">
+    <h1>Bruna</h1>
+    <p>Se você está lendo isso, quero que saiba que é uma pessoa maravilhosa. Seu sorriso e sua energia fazem todos ao seu redor mais felizes.</p>
+    <p>Na sua vida, vão aparecer pessoas ruins, que sentirão inveja ou ciúmes de qualquer coisa que você faça. Isso acontece porque você incomoda aqueles que não sabem — ou não querem — ser felizes.</p>
+    <p>Você me ajudou sem nem me conhecer, e sou muito grato por isso. Por um momento, você me fez lembrar dos meus sonhos… Eu adorava correr, era o que mais me fazia feliz, mas acabei parando. Também tinha o sonho de encontrar um amor, ter filhos e ser um bom homem… e, de certa forma, também deixei isso de lado. Mas você me trouxe de volta essas lembranças, e por isso, obrigado.</p>
+    <p>Não sei como será o seu futuro, mas desejo de todo coração que você seja feliz e encontre o que procura. Ah, e engraçado… você nunca recebeu flores, não é? Segredo nosso: eu também nunca entreguei flores. Obrigado por me permitir expressar meus sentimentos.</p>
+    <p class="assinatura">Com carinho,<br>Bjs,<br>Allan</p>
+
+   <audio id="musica" loop>
+    <source src="./SpotMate - Matchstick Piano Man - Just the Way You Are Instrumental Piano.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+
+<script>
+    function login() {
+        const usuario = document.getElementById('usuario').value;
+        const senha = document.getElementById('senha').value;
+
+        if (usuario === "Bruna" && senha === "stitch") {
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('mensagem').style.display = 'block';
+        const musica = document.getElementById('musica');
+        musica.play().catch(err => {
+            // Caso o navegador bloqueie o autoplay, você pode avisar o usuário ou ignorar
+            console.log("Erro ao tentar tocar a música automaticamente:", err);
+        });
+    } else {
+        alert("Usuário ou senha incorretos!");
+    }
+}
+
+    function toggleSenha() {
+        const campoSenha = document.getElementById('senha');
+        const botaoOlho = document.querySelector('.mostrar-senha');
+        if (campoSenha.type === "password") {
+            campoSenha.type = "text";
+            botaoOlho.textContent = "🙈";
+        } else {
+            campoSenha.type = "password";
+            botaoOlho.textContent = "👁";
+        }
+    }
+</script>
+
+</body>
+</html>
